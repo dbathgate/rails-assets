@@ -1,9 +1,11 @@
 FROM ruby:3.1.4
 
+ARG ARCHITECTURE=x64
+
 ENV RAILS_ENV production
 ENV PATH=/usr/local/node/bin:${PATH}
 
-RUN curl -L -o- https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-$(dpkg --print-architecture).tar.xz | tar -J -x \
+RUN curl -L -o- https://nodejs.org/dist/v18.17.1/node-v18.17.1-linux-${ARCHITECTURE}.tar.xz | tar -J -x \
  && mv node-* /usr/local/node \
  && npm install -g yarn
 
